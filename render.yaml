@@ -1,6 +1,6 @@
 ---
 services:
-  # - type: web_service
+    type: web_service
     name: ci4-web
     env: docker
     repo: https://github.com/SanketNaykal/ci4.git
