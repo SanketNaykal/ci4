@@ -1,17 +1,15 @@
 # render.yaml - Render Blueprint for CI4 + MySQL
 # Put this at the repo root: render.yaml
 
-# global plan (optional)
 plan: starter
 
 services:
-  - type: web_service
+  - type: private_service
     name: ci4-mysql
     env: docker
     repo: https://github.com/SanketNaykal/ci4.git
     branch: master
-    dockerfilePath: Dockerfile
-    image: mysql:8.0    # official MySQL image; change to mysql:5.7 if needed
+    image: mysql:8.0
     spec:
       plan: standard
       disks:
@@ -20,13 +18,13 @@ services:
           sizeGb: 10
     envVars:
       - key: MYSQL_ROOT_PASSWORD
-        sync: false     # secret — Render will prompt for this value on creation
+        sync: false
       - key: MYSQL_DATABASE
         value: ci4db
       - key: MYSQL_USER
         value: ci4user
       - key: MYSQL_PASSWORD
-        sync: false     # secret — Render will prompt for this value on creation
+        sync: false
 
   - type: web_service
     name: ci4-web
@@ -38,8 +36,6 @@ services:
       plan: starter
       region: oregon
       envVars:
-        # We leave DB_HOST blank so you're prompted to paste the private service host,
-        # or you can fill it from the MySQL service details after creation.
         - key: DB_HOST
           sync: false
         - key: DB_PORT
@@ -50,9 +46,8 @@ services:
           sync: false
         - key: DB_DATABASE
           value: ci4db
-      buildCommand: ""   # optional: leave blank so Dockerfile controls build
-      startCommand: ""   # optional: container's CMD will be used
+      buildCommand: ""
+      startCommand: ""
 
-# (Optional) enable generation of preview environments:
 previews:
   generation: automatic
