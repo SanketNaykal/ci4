@@ -5,7 +5,7 @@
 plan: starter
 
 services:
-  - type: private_service
+  - type: web_service
     name: ci4-mysql
     env: docker
     repo: https://github.com/SanketNaykal/ci4.git
