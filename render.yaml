@@ -1,27 +1,5 @@
 ---
-plan: starter
 services:
-  - type: private_service
-    name: ci4-mysql
-    env: docker
-    repo: https://github.com/SanketNaykal/ci4.git
-    branch: master
-    image: mysql:8.0
-    spec:
-      plan: standard
-      disks:
-        - name: mysql-data
-          mountPath: /var/lib/mysql
-          sizeGb: 10
-    envVars:
-      - key: MYSQL_ROOT_PASSWORD
-        sync: false
-      - key: MYSQL_DATABASE
-        value: ci4db
-      - key: MYSQL_USER
-        value: ci4user
-      - key: MYSQL_PASSWORD
-        sync: false
   - type: web_service
     name: ci4-web
     env: docker
@@ -44,5 +22,3 @@ services:
           value: ci4db
       buildCommand: ""
       startCommand: ""
-previews:
-  generation: automatic
