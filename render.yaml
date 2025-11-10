@@ -1,8 +1,5 @@
-# render.yaml - Render Blueprint for CI4 + MySQL
-# Put this at the repo root: render.yaml
-
+---
 plan: starter
-
 services:
   - type: private_service
     name: ci4-mysql
@@ -25,7 +22,6 @@ services:
         value: ci4user
       - key: MYSQL_PASSWORD
         sync: false
-
   - type: web_service
     name: ci4-web
     env: docker
@@ -48,6 +44,5 @@ services:
           value: ci4db
       buildCommand: ""
       startCommand: ""
-
 previews:
   generation: automatic
