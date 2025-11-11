@@ -1,11 +1,21 @@
-# Dockerfile for CodeIgniter 4
-FROM php:8.2-apache
+# Dockerfile for CodeIgniter 4 (fixed: installs ext-intl)
+FROM php:8.1-apache
 
-# system deps + php ext for CI4
+# install system deps + php ext for CI4 (including intl)
 RUN apt-get update && apt-get install -y \
-    git zip unzip libzip-dev libpng-dev libonig-dev \
-    && docker-php-ext-install pdo_mysql mbstring zip gd \
-    && rm -rf /var/lib/apt/lists/*
+    git \
+    zip \
+    unzip \
+    libzip-dev \
+    libonig-dev \
+    libpng-dev \
+    libicu-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j$(nproc) pdo_mysql mbstring zip intl gd \
+  && rm -rf /var/lib/apt/lists/*
 
 # enable apache rewrite
 RUN a2enmod rewrite
