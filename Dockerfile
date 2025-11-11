@@ -1,5 +1,5 @@
-# Dockerfile for CodeIgniter 4 (fixed: installs ext-intl)
-FROM php:8.1-apache
+# Dockerfile for CodeIgniter 4 (PHP 8.2, ext-intl + common exts)
+FROM php:8.2-apache
 
 # install system deps + php ext for CI4 (including intl)
 RUN apt-get update && apt-get install -y \
