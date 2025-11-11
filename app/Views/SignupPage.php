@@ -28,7 +28,7 @@
                 <div class="wrap">
                         <div class="card">
                                 <div class="left">
-                                        <h1>Sign up</h1>
+                                        <h1>Sign up for ci4</h1>
                                         <?php // Use CI url helper for action; ensure URL helper is loaded in controller or autoload
                                         $action = function_exists('base_url') ? base_url('para1/para1sighup.php') : '/para1/para1sighup.php'; ?>
                                         <form action="<?= esc($action) ?>" method="post" autocomplete="off">
