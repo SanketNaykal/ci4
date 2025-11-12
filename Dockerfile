@@ -10,8 +10,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     libonig-dev \
     libpng-dev \
     libicu-dev \
-    libpq-dev \            # <<-- provides libpq-fe.h and pg_config
-    postgresql-client \    # helpful for psql & debugging (optional)
+    libpq-dev \            
+    postgresql-client \    
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     zlib1g-dev \
