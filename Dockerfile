@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
-  && docker-php-ext-install -j$(nproc) pdo_mysql mbstring zip intl gd \
+  && docker-php-ext-install -j$(nproc) pdo_pgsql pgsql mbstring zip intl gd \
   && rm -rf /var/lib/apt/lists/*
 
 # enable apache rewrite

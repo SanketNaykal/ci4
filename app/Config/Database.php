@@ -25,31 +25,31 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
-        'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'para1',
-        'DBDriver'     => 'MySQLi',
-        'DBPrefix'     => '',
-        'pConnect'     => false,
-        'DBDebug'      => true,
-        'charset'      => 'utf8mb4',
-        'DBCollat'     => 'utf8mb4_general_ci',
-        'swapPre'      => '',
-        'encrypt'      => false,
-        'compress'     => false,
-        'strictOn'     => false,
-        'failover'     => [],
-        'port'         => 3307,
-        'numberNative' => false,
-        'foundRows'    => false,
-        'dateFormat'   => [
-            'date'     => 'Y-m-d',
-            'datetime' => 'Y-m-d H:i:s',
-            'time'     => 'H:i:s',
-        ],
-    ];
+    'DSN'          => '',
+    'hostname'     => 'localhost',
+    'username'     => 'root',
+    'password'     => '',
+    'database'     => 'mydb',
+    'DBDriver'     => 'MySQLi',
+    'DBPrefix'     => '',
+    'pConnect'     => false,
+    'DBDebug'      => (ENVIRONMENT !== 'production'),
+    'charset'      => 'utf8',
+    'DBCollat'     => 'utf8_general_ci',
+    'swapPre'      => '',
+    'encrypt'      => false,
+    'compress'     => false,
+    'strictOn'     => false,
+    'failover'     => [],
+    'port'         => 5432,
+    'numberNative' => false,
+    'foundRows'    => false,
+    'dateFormat'   => [
+        'date'     => 'Y-m-d',
+        'datetime' => 'Y-m-d H:i:s',
+        'time'     => 'H:i:s',
+    ],
+];
 
     //    /**
     //     * Sample database connection for SQLite3.
@@ -199,5 +199,12 @@ class Database extends Config
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
+
+        $this->default['hostname'] = getenv('DATABASE_HOSTNAME') ?: 'dpg-d4a2m82li9vc73faa78g-a';
+        $this->default['username'] = getenv('DATABASE_USERNAME') ?: 'cir_postgre';
+        $this->default['password'] = getenv('DATABASE_PASSWORD') ?: 'ffI1ETR5q5Ss9NPsLmJ7WmhpHxeYlIEU';
+        $this->default['database'] = getenv('DATABASE_NAME') ?: 'cir_postgre';
+        $this->default['DBDriver'] = getenv('DATABASE_DRIVER') ?: 'Postgre';
+        $this->default['port'] = getenv('DATABASE_PORT') ?: '5432';
     }
 }
