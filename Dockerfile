@@ -1,4 +1,4 @@
-# Dockerfile for CodeIgniter 4 on Render (PHP 8.2 + PostgreSQL)
+# Dockerfile for CodeIgniter 4 on Render (PHP 8.2 + PostgreSQL).
 FROM php:8.2-apache
 
 # Install system packages needed to build PHP extensions (including libpq-dev)
