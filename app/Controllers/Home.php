@@ -43,4 +43,14 @@ class Home extends BaseController
         session()->destroy();
         return redirect()->to('/login');
     }
+    public function dbtest(){
+        $db = \Config\Database::connect();
+        try {
+            $query = $db->query('SELECT version() AS version;');
+            $result = $query->getRow();
+            return "✅ Connected to PostgreSQL!<br>Version: " . $result->version;
+        } catch (\Exception $e) {
+            return "❌ Database connection failed: " . $e->getMessage();
+        }
+    }
 }

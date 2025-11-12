@@ -9,4 +9,5 @@ $routes->get('/', 'Home::index');
 $routes->get('login', 'Home::login');
 $routes->post('login', 'Home::login');
 $routes->get('logout', 'Home::logout');
+$routes->get('dbtest', 'Home::dbtest');
 //$routes->setAoutoRoute(true);
