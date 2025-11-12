@@ -48,3 +48,12 @@ RUN chown -R www-data:www-data /var/www/html/writable \
 
 EXPOSE 80
 CMD ["apache2-foreground"]
+
+# pgAdmin 
+#authentication:
+#  username: sanketnaykal24@gmail.com
+#  password: fca5e058550b952a7a0c5865663a24e1
+# pgHero
+#authentication:
+#  username: pghero-298976ed
+#  password: 008caf608a7c98968d1d3ad10032a479

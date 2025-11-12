@@ -52,5 +52,17 @@ class Home extends BaseController
         } catch (\Exception $e) {
             return "❌ Database connection failed: " . $e->getMessage();
         }
+        try {
+            $query1 = $db->query('SELECT * FROM users;');
+            $results = $query1->getResultArray();
+            $output = "<h2>Users Table Data:</h2><ul>";
+            foreach ($results as $row) {
+                $output .= "<li>" . implode(", ", $row) . "</li>";
+            }
+            $output .= "</ul>";
+            return $output;
+        } catch (\Exception $e) {
+            return "❌ Query failed: " . $e->getMessage();
+        }
     }
 }
