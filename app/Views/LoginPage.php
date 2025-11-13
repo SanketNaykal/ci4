@@ -48,7 +48,7 @@
                             <button type="submit" class="btn">Login</button>
                         </div>
                         <div class="bottom">
-                            Need an account? <a href="<?= esc(function_exists('base_url') ? base_url('signup') : '/signup') ?>">Sign up</a>
+                            Need an account? <a href="<?= esc(function_exists('base_url') ? base_url('signup') : 'signup') ?>">Sign up</a>
                         </div>
                     </form>
                 </div>

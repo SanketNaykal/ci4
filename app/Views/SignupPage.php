@@ -51,7 +51,7 @@
                                                 <div class="field">
                                                         <button type="submit" class="btn">Signup</button>
                                                 </div>
-                                                <div class="bottom">Have an account? <a href="<?= esc(function_exists('base_url') ? base_url('LoginPage.php') : 'LoginPage.php') ?>">Login</a></div>
+                                                <div class="bottom">Have an account? <a href="<?= esc(function_exists('base_url') ? base_url('login') : 'login') ?>">Login</a></div>
                                         </form>
                                 </div>
                                 <div class="right">
