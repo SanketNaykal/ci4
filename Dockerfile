@@ -57,3 +57,10 @@ CMD ["apache2-foreground"]
 #authentication:
 #  username: pghero-298976ed
 #  password: 008caf608a7c98968d1d3ad10032a479
+#pgAdmin connection:
+# name: Render PostgreSQL
+# host: dpg-d4a2m82li9vc73faa78g-a.oregon-postgres.render.com
+# port: 5432
+# username: cir_postgre_user
+# password: ffI1ETR5q5Ss9NPsLmJ7WmhpHxeYlIEU
+# database: cir_postgre

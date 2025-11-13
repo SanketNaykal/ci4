@@ -48,7 +48,7 @@ class Home extends BaseController
         try {
             $query = $db->query('SELECT version() AS version;');
             $result = $query->getRow();
-            return "✅ Connected to PostgreSQL!<br>Version: " . $result->version;
+            return "Connected to PostgreSQL!<br>Version: " . $result->version;
         } catch (\Exception $e) {
             return "❌ Database connection failed: " . $e->getMessage();
         }
