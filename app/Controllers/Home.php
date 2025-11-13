@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('LoginPage');
+        return view('SighupPage');
     }
     public function login()
     {
@@ -68,6 +68,6 @@ class Home extends BaseController
             $output .= "<br>❌ Query failed: " . $e->getMessage();
         }
 
-        return $output;
+        return view('DbTestView', ['output' => $output]);
     }
 }
