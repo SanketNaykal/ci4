@@ -29,8 +29,6 @@
                         <div class="card">
                                 <div class="left">
                                         <h1>Sign up For ci4</h1>
-                                        <?php // Use CI url helper for action; ensure URL helper is loaded in controller or autoload
-                                        $action = function_exists('base_url') ? base_url('para1/para1sighup.php') : '/para1/para1sighup.php'; ?>
                                         <form action="signup" method="post" autocomplete="off">
                                                 <div class="field">
                                                         <label for="name">Unique User Name</label>
