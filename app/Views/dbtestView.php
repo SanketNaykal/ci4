@@ -14,6 +14,8 @@
 <body>
     <h1>Database Test</h1>
     <?= $output ?>
+    <hr>
+    <?= $output2 ?>
     <p><small>Page auto-refreshes every 30 seconds</small></p>
 </body>
 </html>

@@ -43,9 +43,14 @@ class Home extends BaseController
         session()->destroy();
         return redirect()->to('/login');
     }
+    public function signup(): string
+    {
+        return view('SignupPage'); // ensure Views/SignupPage.php exists (or change name to match your view)
+    }
     public function dbtest(){
         $db = \Config\Database::connect();
         $output = '';
+        $output2 = '';
 
         try {
             $query = $db->query('SELECT version() AS version;');
@@ -68,6 +73,17 @@ class Home extends BaseController
             $output .= "<br>❌ Query failed: " . $e->getMessage();
         }
 
-        return view('DbTestView', ['output' => $output]);
+        /* try{
+            $insRefresh = $db->query("INSERT into users (name, email) values ('Sanket Naykal2','sanketnaykal@djhd.om');");
+            $insRefreshResult = $insRefresh->get_result();
+            $deleRefresh = $db->query("DELETE FROM users WHERE name = 'Sanket Naykal2';");
+            $deleRefreshResult = $deleRefresh->get_result();
+        }catch (\Exception $e){
+            $output2 .= "<br>❌ Query failed: " . $e->getMessage();
+        } */
+
+        return view('DbTestView', ['output' => $output, 'ouput2' => $output2]);
     }
 }
+// DELETE FROM users WHERE name = 'Sanket Naykal2';
+//insert into users (name, email) values ('Sanket Naykal2','sanketnaykal@djhd.om');
