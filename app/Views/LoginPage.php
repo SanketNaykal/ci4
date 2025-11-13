@@ -35,7 +35,7 @@
                     <?php endif; ?>
 
                     <?php $action = function_exists('base_url') ? base_url('login') : '/login'; ?>
-                    <form action="<?= esc($action) ?>" method="post" autocomplete="off">
+                    <form action="/login" method="post" autocomplete="off">
                         <div class="field">
                             <label for="name">Username</label>
                             <input type="text" name="name" id="name" required>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="right">
                     <?php $img = function_exists('base_url') ? base_url('para1/img/login-otp-banner.png') : '/para1/img/login-otp-banner.png'; ?>
-                    <img src="<?= esc($img) ?>" alt="banner" class="img-sample">
+                    <img src="" alt="banner" class="img-sample">
                 </div>
             </div>
         </div>

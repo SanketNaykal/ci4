@@ -6,9 +6,10 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('login', 'Home::login');
-$routes->post('login', 'Home::login');
-$routes->get('logout', 'Home::logout');
+$routes->get('login',    'Auth::login');
+$routes->post('login',   'Auth::attemptLogin');
+$routes->get('signup',   'Auth::signup');
+$routes->post('signup',  'Auth::register');
+$routes->get('logout',   'Auth::logout');
 $routes->get('dbtest', 'Home::dbtest');
-$routes->get('signup', 'Home::signup');
 //$routes->setAoutoRoute(true);
