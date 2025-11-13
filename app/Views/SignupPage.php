@@ -51,12 +51,12 @@
                                                 <div class="field">
                                                         <button type="submit" class="btn">Signup</button>
                                                 </div>
-                                                <div class="bottom">Have an account? <a href="<?= esc(function_exists('base_url') ? base_url('login') : 'login') ?>">Login</a></div>
+                                                <div class="bottom">Have an account? <a href="/login">Login</a></div>
                                         </form>
                                 </div>
                                 <div class="right">
                                         <?php $img = function_exists('base_url') ? base_url('para1/img/login-otp-banner.png') : '/para1/img/login-otp-banner.png'; ?>
-                                        <img src="<?= esc($img) ?>" alt="banner" class="img-sample">
+                                        <img src="\public\assets\images\login-otp-banner.png" alt="banner" class="img-sample">
                                 </div>
                         </div>
                 </div>
