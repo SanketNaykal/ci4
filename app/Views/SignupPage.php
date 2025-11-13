@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="right">
                                         <?php $img = function_exists('base_url') ? base_url('para1/img/login-otp-banner.png') : '/para1/img/login-otp-banner.png'; ?>
-                                        <img src="\public\assets\images\login-otp-banner.png" alt="banner" class="img-sample">
+                                        <img src="" alt="banner" class="img-sample">
                                 </div>
                         </div>
                 </div>
