@@ -35,7 +35,7 @@
                     <?php endif; ?>
 
                     <?php $action = function_exists('base_url') ? base_url('login') : '/login'; ?>
-                    <form action="/login" method="post" autocomplete="off">
+                    <form action="login" method="post" autocomplete="off">
                         <div class="field">
                             <label for="name">Username</label>
                             <input type="text" name="name" id="name" required>
