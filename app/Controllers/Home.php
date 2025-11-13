@@ -55,6 +55,7 @@ class Home extends BaseController
         try {
             $query1 = $db->query('SELECT * FROM users;');
             $results = $query1->getResultArray();
+            return $this->formatUserData($results);
             $output = "<h2>Users Table Data:</h2><ul>";
             foreach ($results as $row) {
                 $output .= "<li>" . implode(", ", $row) . "</li>";
