@@ -11,8 +11,6 @@ class Home extends BaseController
     public function dbtest(){
         $db = \Config\Database::connect();
         $output = '';
-        $output2 = '';
-
         try {
             $query = $db->query('SELECT version() AS version;');
             $result = $query->getRow();
@@ -43,7 +41,7 @@ class Home extends BaseController
             $output2 .= "<br>❌ Query failed: " . $e->getMessage();
         } */
 
-        return view('DbTestView', ['output' => $output, 'output2' => $output2]);
+        return view('DbTestView', ['output' => $output]);
     }
 }
 // DELETE FROM users WHERE name = 'Sanket Naykal2';
