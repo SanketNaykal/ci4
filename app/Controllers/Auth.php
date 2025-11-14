@@ -72,6 +72,10 @@ class Auth extends BaseController
     public function register()
     {
 
+        if (! $this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
         $rules = [
             'name'            => 'required|min_length[3]',
             'email'           => 'required|valid_email',
@@ -79,31 +83,28 @@ class Auth extends BaseController
             'passwordcom'     => 'required|matches[password]',
         ];
 
-        if (! $this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
-
-        $db = \Config\Database::connect();
         $username = $this->request->getPost('name');
         $email    = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $passwordconfirm = $this->request->getPost('passwordcom');
         try {
             // Query user from DB
+            $db = \Config\Database::connect();
             $query = $db->query('SELECT name, email FROM users WHERE email = ?', [$email]);
             $user = $query->getRow();
 
             if (! $user || ($password!=$passwordconfirm)) {
                 return redirect()->back()->withInput()->with('error', 'Invalid login credentials');
-            }
+            }   
 
+            $hashed = password_hash($password, PASSWORD_BCRYPT);
             // Set session
             /* session()->set([
                 'isLoggedIn' => true,
                 'user_id'    => $user->id,
                 'username'   => $user->name,
             ]); */
-            $query1 = $db->query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [$username, $email, password_hash($password, PASSWORD_BCRYPT)]);
+            $query1 = $db->query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [$username, $email, $hashed]);
 
             return redirect()->to('/dashboard');
 
