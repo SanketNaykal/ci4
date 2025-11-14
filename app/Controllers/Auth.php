@@ -76,7 +76,7 @@ class Auth extends BaseController
             'name'            => 'required|min_length[3]',
             'email'           => 'required|valid_email',
             'password'        => 'required|min_length[6]',
-            'password_confirm'=> 'required|matches[password]',
+            'passwordcom'     => 'required|matches[password]',
         ];
 
         if (! $this->validate($rules)) {
@@ -95,18 +95,18 @@ class Auth extends BaseController
             $query = $db->query('SELECT name, email FROM users WHERE email = ?', [$email]);
             $user = $query->getRow();
 
-            if (! $user || ($password!=$userpassword)) {
+            if (! $user || ($password!=$passwordconfirm)) {
                 return redirect()->back()->withInput()->with('error', 'Invalid login credentials');
             }
 
             // Set session
-            session()->set([
+            /* session()->set([
                 'isLoggedIn' => true,
                 'user_id'    => $user->id,
                 'username'   => $user->name,
-            ]);
+            ]); */
             $query1 = $db->query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [$username, $email, password_hash($password, PASSWORD_BCRYPT)]);
-            
+
             return redirect()->to('/dashboard');
 
         } catch (\Exception $e) {
