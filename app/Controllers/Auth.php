@@ -92,6 +92,7 @@ class Auth extends BaseController
         $password = $this->request->getPost('password');
         $passwordconfirm = $this->request->getPost('passwordcom');
 
+        console.log($db, $username, $email, $password, $passwordconfirm);
         try {
             $builder = $db->table('users');
 
