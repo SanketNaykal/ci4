@@ -88,8 +88,6 @@ class Auth extends BaseController
         $email    = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $passwordconfirm = $this->request->getPost('passwordcom');
-
-        console.log($db, $username, $email, $password, $passwordconfirm);
         try {
             // Query user from DB
             $query = $db->query('SELECT name, email FROM users WHERE email = ?', [$email]);
