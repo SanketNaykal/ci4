@@ -1,4 +1,3 @@
-<?php ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +12,9 @@
 </head>
 <body>
     <h1>Database Test</h1>
-    <?= $output ?>
+    <?php echo $output ?>
     <hr>
-    <?= $output2 ?>
+    <?php echo $output2 ?>
     <p><small>Page auto-refreshes every 30 seconds</small></p>
 </body>
 </html>
