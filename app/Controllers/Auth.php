@@ -71,9 +71,6 @@ class Auth extends BaseController
     // Handle signup POST
     public function register()
     {
-        if ($this->request->getMethod() !== 'post') {
-            return redirect()->to('/signup');
-        }
 
         $rules = [
             'name'            => 'required|min_length[3]',

@@ -41,7 +41,7 @@ class Home extends BaseController
             $output2 .= "<br>❌ Query failed: " . $e->getMessage();
         } */
 
-        return view('dbtestView', ['output' => $output]);
+        return view('dbtest');
     }
 }
 // DELETE FROM users WHERE name = 'Sanket Naykal2';
