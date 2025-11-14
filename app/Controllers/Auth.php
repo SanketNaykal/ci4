@@ -91,42 +91,26 @@ class Auth extends BaseController
 
         console.log($db, $username, $email, $password, $passwordconfirm);
         try {
-            $builder = $db->table('users');
+            // Query user from DB
+            $query = $db->query('SELECT name, email FROM users WHERE email = ?', [$email]);
+            $user = $query->getRow();
 
-            // Check username
-            $exists = $builder->where('name', $username)->get()->getRow();
-            if ($exists) {
-                return redirect()->back()->withInput()->with('error', 'Username already taken');
+            if (! $user || ($password!=$userpassword)) {
+                return redirect()->back()->withInput()->with('error', 'Invalid login credentials');
             }
 
-            // Check email (use fresh builder)
-            $builder = $db->table('users');
-            $exists = $builder->where('email', $email)->get()->getRow();
-            if ($exists) {
-                return redirect()->back()->withInput()->with('error', 'Email already registered');
-            }
-
-            // Insert user inside transaction
-            $db->transStart();
-
-            $data = [
-                'name'   => $username,
-                'email'      => $email,
-                'password'   => password_hash($password, PASSWORD_DEFAULT),
-            ];
-
-            $db->table('users')->insert($data);
-
-            $db->transComplete();
-
-            if (! $db->transStatus()) {
-                return redirect()->back()->withInput()->with('error', 'Failed to create account. Try again.');
-            }
-
-            return redirect()->to('/login')->with('message', 'Account created successfully');
+            // Set session
+            session()->set([
+                'isLoggedIn' => true,
+                'user_id'    => $user->id,
+                'username'   => $user->name,
+            ]);
+            $query1 = $db->query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [$username, $email, password_hash($password, PASSWORD_BCRYPT)]);
+            
+            return redirect()->to('/dashboard');
 
         } catch (\Exception $e) {
-            return redirect()->back()->withInput()->with('error', 'Database error: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Database error: ' . $e->getMessage());
         }
     }
 }
